@@ -8,6 +8,10 @@ TSFMS="./transforms.conf"
 PROPS="./props.conf"
 RE1="(\w+),"
   echo "Starting."
+  echo "#created by script" >>$TSFMS
+  echo "" >>$TSFMS
+  echo "#created by script" >>$PROPS
+  echo "" >>$PROPS
   IFS=$'\n'
   for DST in `cat "$LIST_FILE"`; do
     if [ -z "$DST" ]; then
@@ -22,5 +26,6 @@ RE1="(\w+),"
     echo "DEST_KEY = _MetaData:Index" >> $TSFMS
     echo "FORMAT = $var2" >> $TSFMS
     echo "" >> $TSFMS
+    echo "$var""_legtsfm," >> $PROPS
    done  
   echo "Finished"
